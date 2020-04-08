@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <title> AdEngine Control Mobile</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.js"></script>
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-size: 15em;
+            font-weight: 800;
+        }
+        .btn {
+            background: cornflowerblue;
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+        }
+        .options-overlay {
+            display: none;
+            font-size: medium;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="to-connect-div">
+        <div aria-label="Connection Code" id="connection_code">
+        </div>
+    
+        <button onclick="beginTheThing()" aria-label="Click to initate" class="btn" id="init-btn">Begin Connection</button>
+        
+    </div>
+    <div id="options-div" class="options-overlay">
+        <div class="profiles">
+            <li onclick="sendPref('home')">Home Buyer</li>
+            <!-- <li>Electorinics </li> -->
+            <li onclick="sendPref('insurace')">Insurance </li>
+            <li onclick="sendPref('food')"> Food </li>
+            <li onclick="sendPref('car')"> Car buyer </li>
+            <li onclick="sendPref('travel')"> Travel </li>
+        </div>
+
+
+        <div class="inturupts">
+            <button id="showAd">Push Ad to Connected</button>
+            <button id="start-all">Reset All Devices</button>
+            <button id="inter-all">Ad on All Devices</button>
+            
+        </div>
+        
+    </div>
+
+    <script type="text/javascript" src="main.js"> </script>
+    
+</body>
+
+</html>
