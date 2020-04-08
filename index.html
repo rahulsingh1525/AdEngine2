@@ -22,6 +22,31 @@
     <div id="overlay-div" class="overlay-div full-div">
         <video id="overlay-vid" src=""></video>
     </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBEOu_hMpsN54CCmeitXeGDF7N8M2EA_GE",
+        authDomain: "adengine-new.firebaseapp.com",
+        databaseURL: "https://adengine-new.firebaseio.com",
+        projectId: "adengine-new",
+        storageBucket: "adengine-new.appspot.com",
+        messagingSenderId: "940796457262",
+        appId: "1:940796457262:web:138bc85bc71756b1e50abf",
+        measurementId: "G-ET6DH48K4H"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    let fire_db = firebase.firestore();
+    </script>
     <script src="kaaro.js" type="module"></script>
 </body>
 </html>
