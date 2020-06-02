@@ -4,6 +4,10 @@ function showConnectionDiv() {
     // setTimeout(onConnectionDone, 2000);
 }
 
+function setConnectionCode(number) {
+    document.getElementById('connection-code').innerHTML = number;
+}
+
 
 function onConnectionDone() {
     document.getElementById('connect-div').style.display='none';
@@ -62,5 +66,6 @@ export {
     startFromTheTop,
     resumePlayback,
     showNewProfile,
-    hideNotify
+    hideNotify,
+    setConnectionCode
 };

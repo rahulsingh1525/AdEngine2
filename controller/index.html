@@ -8,7 +8,7 @@
         body {
             background: black;
             color: white;
-            font-size: 15em;
+            /* font-size: 15em; */
             font-weight: 800;
         }
         .btn {
@@ -21,6 +21,10 @@
             display: none;
             font-size: medium;
         }
+        .connected-screens {
+            display: flex;
+            
+        }
     </style>
 
 </head>
@@ -29,14 +33,16 @@
     <div class="to-connect-div">
         <div aria-label="Connection Code" id="connection_code">
         </div>
-    
+        <input type="number" id="screen-id" aria-label="Screen Code">
         <button onclick="beginTheThing()" aria-label="Click to initate" class="btn" id="init-btn">Begin Connection</button>
         
     </div>
-    <div id="options-div" class="options-overlay">
+    <div class="connected-screens" id="cnsc">
+
+    </div>
+    <!-- <div id="options-div" class="options-overlay">
         <div class="profiles">
             <li onclick="sendPref('home')">Home Buyer</li>
-            <!-- <li>Electorinics </li> -->
             <li onclick="sendPref('insurace')">Insurance </li>
             <li onclick="sendPref('food')"> Food </li>
             <li onclick="sendPref('car')"> Car buyer </li>
@@ -51,7 +57,7 @@
             
         </div>
         
-    </div>
+    </div> -->
 
     <script type="text/javascript" src="main.js"> </script>
     

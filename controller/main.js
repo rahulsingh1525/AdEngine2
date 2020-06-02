@@ -1,16 +1,31 @@
 var number = Math.floor(Math.random() * 8888) + 1111;
 
+let connected_screens = {};
 function beginTheThing() {
     init();
 }
 function init() {
-    document.getElementById('connection_code').innerHTML = number;
-    document.getElementById('connection_code').setAttribute('aria-label', `Connection Code is ${number}`);
-    let btn = document.getElementById('init-btn');
-    // var pointer = document.getElementById('the-pointer-to-show');
-    btn.style.display = "none";
+    let screenValue = document.getElementById('screen-id').value;
+    if (!screenValue || screenValue === 0 ) {
+        alert('Invalid Screen Code');
+    } else if(connected_screens[screenValue]) {
+        alert('Screen already connected');
+    } else {
+        addNewScreenDisplay(screenValue);
+    }
+    
 };
 
+function addNewScreenDisplay(code) {
+    connected_screens[code] = "connected";
+    let newDiv = `
+    <div class="screen-controller screen${code}">
+        <h5>${code}</h5>
+        <button id="reset-${code}" onclick="sendReset(${code})">Reset Screen</button>
+    </div>`;
+    document.getElementById('cnsc').innerHTML += newDiv;
+    sendConnectedToScreen(code);
+}
 // init();
 function perform_vibration(type = 1) {
     if (type == 0) {
@@ -78,7 +93,7 @@ function onMessageArrived(message) {
     if (message.topic === `adEngine/${number}/detected`) {
         perform_vibration(0);
     } else if (message.topic === `adEngine/${number}/connected`){
-        show_options();
+        // show_options();
     }
     console.log(message);
     console.log("onMessageArrived:" + message.payloadString);
@@ -105,20 +120,34 @@ function sendStartFromTheTop() {
     client.send(message);
 }
 
-document.getElementById('showAd').onclick = () => {
-    sendAdInterupt();
-}
+// document.getElementById('showAd').onclick = () => {
+//     sendAdInterupt();
+// }
 
-document.getElementById('start-all').onclick = () => {
-    sendStartFromTheTop();
-}
-document.getElementById('inter-all').onclick = () => {
-    sendAdInteruptToAll();
-}
+// document.getElementById('start-all').onclick = () => {
+//     sendStartFromTheTop();
+// }
+// document.getElementById('inter-all').onclick = () => {
+//     sendAdInteruptToAll();
+// }
 
 function sendPref(str) {
     console.log(str);
     let message = new Paho.Message(str);
     message.destinationName = `adEngine/${number}/profile`;
+    client.send(message);
+}
+
+
+function sendConnectedToScreen(message_in) {
+    let message = new Paho.Message('Connected to Device ID');
+    message.destinationName = `adEngine/${message_in}/connected`;
+    client.send(message);
+}
+
+
+function sendReset(message_in) {
+    let message = new Paho.Message('Connected to Device ID');
+    message.destinationName = `adEngine/${message_in}/reset`;
     client.send(message);
 }
