@@ -119,3 +119,8 @@ let dev_id = '1111';
 //     sendConformationToMobile(dev_id);
 //     console.log(`Device Id set to ${dev_id}`);
 // };
+
+
+function triggerAdSegment() {
+    
+}
